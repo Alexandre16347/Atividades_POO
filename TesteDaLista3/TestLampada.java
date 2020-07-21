@@ -1,4 +1,4 @@
-package TesteLista3;
+package TesteDaLista3;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-import Exercicio_3.Lampada;
+import Exercicio_Lista_3.Lampada;
 
 public class TestLampada {
 	

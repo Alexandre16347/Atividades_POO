@@ -3,16 +3,31 @@ package FolhaDePagamento;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public abstract class Lista {
 
-	static ArrayList<Empregado> ListaDeEmpregado = new ArrayList<>();
-	static ArrayList<Gratificacao> ListaDeGratificacao = new ArrayList<>();
+	static Scanner ler = new Scanner(System.in);
+
+	static ArrayList<Empregado> ListaDeEmpregado = new ArrayList<Empregado>();
+	// static ArrayList<Gratificacao> ListaDeGratificacao = new
+	// ArrayList<Gratificacao>();
+	static Map<Empregado, Gratificacao> dataBase = new HashMap<>();
+
+	static void adicionarGratificacao(Empregado e, Gratificacao g) {
+		dataBase.put(e, g);
+	}
 	
-	static Map<Integer,ArrayList<Gratificacao>> dataBase = new HashMap<>();
+	static void adicionarGratificacao(Empregado e, String dataTrabalhada) {
+		Gratificacao g = new Gratificacao();
+		g.adicionarGratificacaoDesempenho(e.getSalario(), dataTrabalhada);
+		dataBase.put(e, g);
+	}
 	
-	static void adicionarGratificacao(Gratificacao e) {
-		ListaDeGratificacao.add(e);
+	static void adicionarGratificacao(Empregado e, int horaTrabalhada, String dataTrabalhada) {
+		Gratificacao g = new Gratificacao();
+		g.adicionarGratificacaoHoraExtra(e.getSalario(), horaTrabalhada, dataTrabalhada);
+		dataBase.put(e, g);
 	}
 
 	static void adicionarEmpregado(Empregado e) {
@@ -33,10 +48,8 @@ public abstract class Lista {
 			System.err.println("Cargo Invalido");
 		}
 	}
-	
+
 	public static void recuperarGratificacao() {
-		
-		
 		
 	}
 

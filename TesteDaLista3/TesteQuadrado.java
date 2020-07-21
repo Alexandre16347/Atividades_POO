@@ -1,10 +1,10 @@
-package TesteLista3;
+package TesteDaLista3;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Exercicio_3.Quadrado;
+import Exercicio_Lista_3.Quadrado;
 
 public class TesteQuadrado {
 

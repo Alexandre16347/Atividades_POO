@@ -1,11 +1,11 @@
-package TesteLista3;
+package TesteDaLista3;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import Exercicio_3.ContaBancaria;
+import Exercicio_Lista_3.ContaBancaria;
 
 public class TesteContaBancaria {
 

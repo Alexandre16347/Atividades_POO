@@ -1,4 +1,4 @@
-package TesteLista3;
+package TesteDaLista3;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Exercicio_3.Estoque;
+import Exercicio_Lista_3.Estoque;
 
 public class TesteEstoque {
 

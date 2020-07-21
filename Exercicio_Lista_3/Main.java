@@ -1,4 +1,4 @@
-package Exercicio_3;
+package Exercicio_Lista_3;
 
 public class Main {
 	public static void main(String[] args) {
