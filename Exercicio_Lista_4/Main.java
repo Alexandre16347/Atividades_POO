@@ -15,9 +15,6 @@ public class Main {
 		Tarefa t4 = new Tarefa("Varrer a casa", "22/07");
 		ListaDeTarefa.adicionar(t4);
 		
-		ListaDeTarefa.finalizar(t1);
-		ListaDeTarefa.finalizar(t3);
-		
 		ListaDeTarefa.listarTarefas();
 		
 	}

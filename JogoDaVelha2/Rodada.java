@@ -4,15 +4,19 @@ import java.util.Scanner;
 
 public class Rodada {
 
-	static Scanner ler = new Scanner(System.in);
+	//Declaracao de variaveis da rodada
+	
+	private static Scanner ler = new Scanner(System.in);
+	
+	//Partida do jogo ou a uma rodada do jogo
 	
 	static void partida() {
-		int linha, coluna, sair = 0;
+		int sair = 0;
 		
 		Tabuleiro.getTabuleiro();
 		
 		while(sair == 0) {
-			if(Jogo.jogada) {
+			if(Jogo.isJogada()) {
 				System.out.print("Digite suas posicoes jogador1 (linha, coluna): ");
 			}
 			else {
@@ -25,10 +29,9 @@ public class Rodada {
 			String resultado = Vencedor.situacao();
 			
 			if(resultado.equals("Velha") || resultado.equals("Jogador1 ganhou") || resultado.equals("Jogador2 ganhou")) {
+				System.out.println(resultado+"\n");
 				sair = 1;
 			}
-			
-			System.out.println(resultado+"\n");
 		}
 	}
 	

@@ -7,7 +7,8 @@ public class Tarefa {
 	 * o status para dizer se a tarefa foi realizada ou não.
 	 */
 
-	private String descricao, dataLimite;
+	private String descricao;
+	private Data dataLimite;
 	private Status status;
 	
 	public String toString() {
@@ -21,7 +22,7 @@ public class Tarefa {
 	}
 
 	public String getDataLimite() {
-		return dataLimite;
+		return dataLimite.toString();
 	}
 
 	public Status getStatus() {
@@ -33,7 +34,7 @@ public class Tarefa {
 	}
 
 	public void setDataLimite(String dataLimite) {
-		this.dataLimite = dataLimite;
+		this.dataLimite.setData(dataLimite);;
 	}
 
 	public void setStatus(Status status) {
@@ -58,7 +59,7 @@ public class Tarefa {
 
 	public Tarefa(String descricao, String dataLimite) {
 		setDescricao(descricao);
-		setDataLimite(dataLimite);
+		this.dataLimite.setData(dataLimite);
 		setStatus(Status.A_fazer);
 	}
 }

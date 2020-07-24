@@ -4,15 +4,20 @@ import java.util.Scanner;
 
 public class Jogo {
 
-	static Jogador jogador1 = new Jogador();
-	static Jogador jogador2 = new Jogador();
-	static int empate = 0;
+	//Declaração das variaveis do Jogo
 	
-	static boolean jogada = true;
+	private static Jogador jogador1 = new Jogador(); //Instancia Jogador 1
+	private static Jogador jogador2 = new Jogador(); //Instancia Jogador 2
+	private static int empate = 0; //Contador de jogos empatados
 	
-	int opcao = 1, rodada = 0;
+	private static boolean jogada = true; //Variavel de alternancia de vez na partida
 	
-	Scanner ler = new Scanner(System.in);
+	private int opcao = 1; //variavel de respostas
+	private static int rodada = 0; //Contador de rodadas
+	
+	private Scanner ler = new Scanner(System.in);
+	
+	//Construtor do jogo
 	
 	Jogo(Character j1, Character j2){
 		Jogo.jogador1.representa(j1);
@@ -20,17 +25,24 @@ public class Jogo {
 		jogada = true;
 	}
 	
+	//Metodo de inicio de jogo
+	
 	public void iniciar() {
+		
+		//Inicia uma partida e enquanto o usuario desejar ele pode jogar novamente
 		
 		do {
 			if (opcao == 1) {
 				Rodada.partida();
+				Jogo.setRodada(getRodada() + 1);
 				Ranking.ranking();
-				++rodada;
+				setRodada(getRodada() + 1);
 			}
 			
-			System.out.println("\n1- Jogar novamente\n2- Sair\n\nopcao: ");
+			System.out.print("\n1- Jogar novamente\n2- Sair\n\nopcao: ");
 			opcao = Integer.valueOf(ler.nextLine());
+			
+			//Selecao das respostas
 			
 			switch(opcao) {
 			case 1:
@@ -45,28 +57,46 @@ public class Jogo {
 				break;
 			}
 				
-		}while(opcao != 2);
+		}while(opcao != 2); //Se o usuario reponder "2" o programa encerra
+	}
+	
+	//Geters e Seters
+	
+	public static void setJogadores(Character j1, Character j2) {
+		Jogo.jogador1.representa(j1);
+		Jogo.jogador2.representa(j2);
+		jogada = true;
 	}
 
 	static Jogador getJogador1() {
 		return jogador1;
 	}
 
-	public static void setJogador1(Jogador jogador1) {
-		Jogo.jogador1 = jogador1;
-	}
-
 	static Jogador getJogador2() {
 		return jogador2;
 	}
-
-	public static void setJogador2(Jogador jogador2) {
-		Jogo.jogador2 = jogador2;
+	
+	public static boolean isJogada() {
+		return jogada;
+	}
+	
+	public static void setJogada(boolean jogada) {
+		Jogo.jogada = jogada;
 	}
 
-	public static void setJogadores(Character j1, Character j2) {
-		Jogo.jogador1.representa(j1);
-		Jogo.jogador2.representa(j2);
-		jogada = true;
+	public static int getRodada() {
+		return rodada;
+	}
+
+	public static void setRodada(int rodada) {
+		Jogo.rodada = rodada;
+	}
+
+	public static int getEmpate() {
+		return empate;
+	}
+
+	public static void setEmpate(int empate) {
+		Jogo.empate = empate;
 	}
 }

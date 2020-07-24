@@ -2,7 +2,25 @@ package JogoDaVelha2;
 
 public class Tabuleiro {
 
-	static Character[][] tabuleiro = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}};
+	//Declaracao das variaveis do tabuleiro
+	
+	private static Character[][] tabuleiro = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}};
+	
+	//Zera meu tabuleiro
+	
+	static void zerar() {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < tabuleiro.length; j++) {
+				tabuleiro[i][j] = ' ';
+			}
+		}
+		Jogo.setJogada(true);
+	}
+	
+	
+	//Geters e Seters
+	
+	//Printa meu tabuleiro
 	
 	static void getTabuleiro() {
 		System.out.println("\n   0 | 1 | 2 \n");
@@ -12,20 +30,15 @@ public class Tabuleiro {
 		System.out.println("");
 	}
 	
+	//Retorna a posicao do tabuleiro
+	
 	static Character getPosicaoTabuleiro(int linha, int coluna) {
 		return tabuleiro[linha][coluna];
 	}
+	//Modifica a posicao do tabuleiro
 	
 	static void setPosicaoTabuleiro(int linha, int coluna, Character simbolo) {
 		tabuleiro[linha][coluna] = simbolo;
-	}
-	
-	static void zerar() {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < tabuleiro.length; j++) {
-				tabuleiro[i][j] = ' ';
-			}
-		}
 	}
 	
 }
