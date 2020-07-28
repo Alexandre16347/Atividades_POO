@@ -90,6 +90,7 @@ public class ListaDeTarefa {
 				j++;
 			}
 		}
+		
 		return (i != j) ? true : false;
 	}
 

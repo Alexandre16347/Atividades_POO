@@ -11,6 +11,7 @@ public class Tarefa {
 	private Data dataLimite;
 	private Status status;
 	
+	@Override
 	public String toString() {
 		return "Descricao:   "+getDescricao()+
 				"\nData limite: "+getDataLimite()+
@@ -58,8 +59,8 @@ public class Tarefa {
 	}
 
 	public Tarefa(String descricao, String dataLimite) {
+		this.dataLimite = new Data(dataLimite);
 		setDescricao(descricao);
-		this.dataLimite.setData(dataLimite);
 		setStatus(Status.A_fazer);
 	}
 }
