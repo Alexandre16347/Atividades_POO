@@ -6,11 +6,15 @@ public abstract class Empregado {
 	protected double salario;
 
 	public String toString() {
-		return "Nome: " + getNome() + "Cargo: " + getCargo() + "Salario: " + getSalario();
+		return "Nome: " + getNome() + "\nCargo: " + getCargo() + "\nSalario: " + getSalario();
 	}
 
 	public String getCargo() {
 		return cargo;
+	}
+	
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 
 	public String getNome() {

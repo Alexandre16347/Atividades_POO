@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import FolhaDePagamento.Lista;
-
 public class TesteDaLista4 {
 	
 	@Test
@@ -24,7 +22,7 @@ public class TesteDaLista4 {
 		ListaDeTarefa.mudarTarefa(t, "Estudar", "21/07");
 		String resultado = ListaDeTarefa.getTarefa(t);
 		
-		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/07\nStatus:      A_fazer");
+		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/7\nStatus:      A_fazer");
 		ListaDeTarefa.limparListaDeTarefa();
 	}
 	
@@ -36,7 +34,7 @@ public class TesteDaLista4 {
 		ListaDeTarefa.mudarTarefa(t, "Estudar", "21/07");
 		String resultado = ListaDeTarefa.getTarefa(0);
 		
-		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/07\nStatus:      A_fazer");
+		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/7\nStatus:      A_fazer");
 		ListaDeTarefa.limparListaDeTarefa();
 	}
 	
@@ -47,8 +45,9 @@ public class TesteDaLista4 {
 		
 		ListaDeTarefa.mudarTarefa(t, "Estudar", "21/07");
 		String resultado = ListaDeTarefa.getTarefa(t);
+		//System.out.println(resultado);
 		
-		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/07\nStatus:      A_fazer");
+		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/7\nStatus:      A_fazer");
 		ListaDeTarefa.limparListaDeTarefa();
 	}
 	
@@ -60,7 +59,7 @@ public class TesteDaLista4 {
 		ListaDeTarefa.mudarTarefa(0, "Estudar", "21/07");
 		String resultado = ListaDeTarefa.getTarefa(0);
 		
-		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/07\nStatus:      A_fazer");
+		assertEquals(resultado, "Descricao:   Estudar\nData limite: 21/7\nStatus:      A_fazer");
 		ListaDeTarefa.limparListaDeTarefa();
 	}
 	

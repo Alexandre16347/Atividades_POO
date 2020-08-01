@@ -77,7 +77,7 @@ public class ListaDeTarefa {
 			System.out.println("Lista Vasia");
 		} else {
 			for (Tarefa tarefa : listaDeTarefa) {
-				System.out.println(tarefa.toString() + "\n" + "Indice: " + listaDeTarefa.indexOf(tarefa) + "\n");
+				System.out.println(tarefa + "\n" + "Indice: " + listaDeTarefa.indexOf(tarefa) + "\n");
 			}
 		}
 	}

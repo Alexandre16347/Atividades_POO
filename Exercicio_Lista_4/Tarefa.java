@@ -22,8 +22,8 @@ public class Tarefa {
 		return descricao;
 	}
 
-	public String getDataLimite() {
-		return dataLimite.toString();
+	public Data getDataLimite() {
+		return dataLimite;
 	}
 
 	public Status getStatus() {
