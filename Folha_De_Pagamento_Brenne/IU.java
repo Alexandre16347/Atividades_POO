@@ -11,7 +11,7 @@ public class IU {
 	private static void menuPrincipal() {
 		System.out.println("------ MENU DE PRINCIPAL ------");
 		System.out.println("[1] Menu de empregados");
-		System.out.println("[2] Folha de pagamento");
+		System.out.println("[3] Folha de pagamento");
 		System.out.println("[0] SAIR");
 		System.out.print("Digite sua opção: ");
 	}
@@ -64,15 +64,15 @@ public class IU {
 	}
 
 	@SuppressWarnings("unused")
-	private static void menuAtualizaGratificacao(int index_empregado, int index_gratificacao) {
+	private static void menuAtualizaGratificacao(int index_empregado, int index_gratificacao, TipoGratificacao tp) {
 
 		Gratificacao g = ListaDeGratificacoes.recuperaGratificacao(index_empregado, index_gratificacao);
 
-		if (g.getTipo().equals(TipoGratificacao.Desempenho)) {
+		if (tp == TipoGratificacao.Hora_extra) {
 			System.out.println("------ MENU DE ATUALIZAÇÃO ------");
-			System.out.println("[1] Atualiza data e hora trabalhada");
-			System.out.println("[3] Atualiza data trabalhada");
-			System.out.println("[3] Atualiza hora trabalhada");
+			System.out.println("[1] Atualiza data trabalhada");
+			System.out.println("[2] Atualiza hora trabalhada");
+			System.out.println("[3] Atualiza data e hora trabalhada");
 			System.out.println("[0] Voltar ao menu anterior\n");
 			System.out.print("Digite sua opção: ");
 		} else {
@@ -264,10 +264,10 @@ public class IU {
 					break;
 				case 5:
 
-					System.out.println("Qual o indice da gratificacao: ");
+					System.out.print("Qual o indice da gratificacao: ");
 					int opg1 = ler.nextInt();
 					ListaDeGratificacoes.removeGratificacao(ep, opg1);
-					
+
 					break;
 				case 6:
 					ListaDeFuncionario.removeEmpregado(ep);
@@ -293,7 +293,70 @@ public class IU {
 	private static void IUAtualizaGratificacao(int ep, int opg2) {
 		Gratificacao g = ListaDeGratificacoes.recuperaGratificacao(ep, opg2);
 		
-		
+		if (g != null) {
+			TipoGratificacao tp = g.getTipo();
+			ler = new Scanner(System.in);
+			int opg;
+
+			do {
+
+				menuAtualizaGratificacao(ep, opg2, tp);
+
+				opg = ler.nextInt();
+
+				switch (tp) {
+				case Desempenho:
+					switch (opg) {
+					case 1:
+						System.out.print("Digite a nova data: ");
+						String data = ler.next();
+						ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data);
+						System.out.println("ATUALIZADA COM SUCESSO");
+						break;
+					case 0:
+						break;
+					default:
+						System.out.println("Opcao Invalida");
+						break;
+					}
+					break;
+				case Hora_extra:
+					switch (opg) {
+					case 1:
+						System.out.print("Digite a nova data: ");
+						String data = ler.next();
+						ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data);
+						System.out.println("ATUALIZADA COM SUCESSO");
+						break;
+					case 2:
+						System.out.print("Digite a nova hora trabalhada: ");
+						int hora = ler.nextInt();
+						ListaDeGratificacoes.recuperaGratificacao(ep, opg2)
+								.calculaGratificacao(ListaDeFuncionario.recuperaEmpregado(ep).getSalarioBase(), hora);
+						System.out.println("ATUALIZADA COM SUCESSO");
+						break;
+					case 3:
+						System.out.print("Digite a nova data: ");
+						String data1 = ler.next();
+						ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data1);
+						System.out.println("Digite a nova hora trabalhada: ");
+						int hora1 = ler.nextInt();
+						ListaDeGratificacoes.recuperaGratificacao(ep, opg2)
+								.calculaGratificacao(ListaDeFuncionario.recuperaEmpregado(ep).getSalarioBase(), hora1);
+						System.out.println("ATUALIZADA COM SUCESSO");
+						break;
+					case 0:
+						break;
+					default:
+						System.out.println("Opcao Invalida");
+						break;
+					}
+					break;
+				}
+
+			} while (opg != 0);
+		}
+
 	}
 
 	private static void IUAtualizaFuncionario(Empregado e) {
