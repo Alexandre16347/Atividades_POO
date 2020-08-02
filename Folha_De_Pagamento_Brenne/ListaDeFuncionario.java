@@ -19,8 +19,9 @@ public class ListaDeFuncionario {
 		}
 		return id;
 	}
-
+	
 	public static void cadastraEmpregado(String nome, String cargo) {
+		Vencimento v;
 		if (listaDeEmpregados == null) {
 			listaDeEmpregados = new ArrayList<Empregado>();
 		}
@@ -28,14 +29,18 @@ public class ListaDeFuncionario {
 		switch (cargo) {
 		case "Funcionário":
 			Empregado funcionario = new Funcionario(nome);
+			 v = new Vencimento();
 			listaDeEmpregados.add(funcionario);
+			ListaDeGratificacoes.criaEmpregado(funcionario, v);
 			break;
 		case "Gerente":
 			Empregado gerente = new Gerente(nome);
+			 v = new Vencimento();
 			listaDeEmpregados.add(gerente);
+			ListaDeGratificacoes.criaEmpregado(gerente, v);
 			break;
 		default:
-			System.out.println("Opção inválida!");
+			System.err.println("Erro!! Opção de cargo inválida...");
 			break;
 		}
 
@@ -59,7 +64,13 @@ public class ListaDeFuncionario {
 	}
 
 	public static Empregado recuperaEmpregado(int index) {
-		return listaDeEmpregados.get(index);
+		for (Empregado empregado : listaDeEmpregados) {
+			if(listaDeEmpregados.indexOf(empregado) == index)
+				return empregado;
+		}
+		Empregado e = null;
+		System.err.println("Empregado Inexistente");
+		return e;
 	}
 
 	public static void recuperaListaDeEmpregados() {

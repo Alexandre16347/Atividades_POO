@@ -3,55 +3,91 @@ package Folha_De_Pagamento_Brenne;
 import java.util.ArrayList;
 
 public class Vencimento {
-	
-	protected static ArrayList<Gratificacao> lista;
 
-	
+	protected ArrayList<Gratificacao> lista;
+
 	public Vencimento() {
 		lista = new ArrayList<Gratificacao>();
 	}
-	
-	public static ArrayList<Gratificacao> getLista() {
+
+	public ArrayList<Gratificacao> getLista() {
 		return lista;
 	}
 
-	public static boolean adicionaNaLista(Gratificacao g) {
-		
-		return Vencimento.lista.add(g);
-		
+	public boolean adicionaNaLista(Gratificacao g) {
+
+		return lista.add(g);
+
 	}
-	
-	public static void removeDaLista(int index) {
-		Vencimento.lista.remove(index);
-	}
-	
-	public static Gratificacao recuperaDaLista(int index) {
-		
-		return lista.get(index);
-	}
-	
-	public static void atualizaData(int index, String nova_data) {
-		Gratificacao g = recuperaDaLista(index);
-		g.setDataTrabalhada(nova_data);
-		
-	}
-	
-	public static void recuperaListaDeGratificacao() {
-		System.out.println("\n-LISTA-DE-VENCIMENTOS-\n");
-		for (Gratificacao g : lista) {
-			System.out.println("\nGratificação: " + g);
+
+	public void removeDaLista(int index) {
+		if (recuperaDaLista(index) != null) {
+			lista.remove(index);
+			System.out.println("GRATIFICACAO EXCLUIDA");
 		}
 
 	}
-	
-	public static ArrayList<Gratificacao> recuperaListaCompleta() {
-		return lista;
+
+	public Gratificacao recuperaDaLista(int index) {
+
+		for (Gratificacao gratificacao : lista) {
+
+			if (lista.indexOf(gratificacao) == index)
+				return gratificacao;
+		}
+		Gratificacao g = null;
+		System.err.println("Gratificacao Inexistente");
+		return g;
 	}
-	
-	
-	
-	
-	
-	
+
+	public void atualizaData(int index, String nova_data) {
+		Gratificacao g = recuperaDaLista(index);
+		g.setDataTrabalhada(nova_data);
+
+	}
+
+	public void recuperaListaDeGratificacao() {
+
+		if (lista.isEmpty()) {
+			System.err.println("O empregado não possui gratificações...");
+		} else {
+			System.out.println("\n-LISTA-DE-VENCIMENTOS-\n");
+			for (Gratificacao g : lista) {
+				System.out.println("\nGratificação: " + g + "\nIndex: " + lista.indexOf(g));
+			}
+		}
+	}
+
+	private double valorMensal = 0;
+	private int contGrat = 0;
+
+	public double getValorMensal() {
+		return valorMensal;
+	}
+
+	public void setValorMensal(double valorMensal) {
+		this.valorMensal = valorMensal;
+	}
+
+	public int getContGrat() {
+		return contGrat;
+	}
+
+	public void setContGrat(int contGrat) {
+		this.contGrat = contGrat;
+	}
+
+	public double valorDaGratificacao() {
+		if (!lista.isEmpty()) {
+			for (Gratificacao gratificacao : lista) {
+				setContGrat(getContGrat() + 1);
+				setValorMensal(gratificacao.getValorDaGraftificacao() + getValorMensal());
+
+			}
+			return getValorMensal();
+		}
+		return 0;
+
+	}
 
 }
